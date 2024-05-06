@@ -1,49 +1,35 @@
-# Contoh Pola Pabrik untuk Sistem Pemesanan Makanan
+# Contoh Pola Pabrik untuk Manufaktur Kendaraan
 
-class Makanan:
-    def __init__(self, nama, harga):
-        self.nama = nama
-        self.harga = harga
+class Kendaraan:
+    def manufaktur(self):
+        pass
 
-    def __str__(self):
-        return f"{self.nama} - Rp{self.harga}"
+class Mobil(Kendaraan):
+    def manufaktur(self):
+        return "Membuat Mobil"
 
-class Burger(Makanan):
-    def __init__(self):
-        super().__init__("Burger", 25000)
+class Motor(Kendaraan):
+    def manufaktur(self):
+        return "Membuat Motor"
 
-class Pizza(Makanan):
-    def __init__(self):
-        super().__init__("Pizza", 45000)
-
-class Pasta(Makanan):
-    def __init__(self):
-        super().__init__("Pasta", 30000)
-
-class PabrikMakanan:
+class PabrikKendaraan:
     @staticmethod
-    def buat_makanan(jenis_makanan):
-        if jenis_makanan == 'burger':
-            return Burger()
-        elif jenis_makanan == 'pizza':
-            return Pizza()
-        elif jenis_makanan == 'pasta':
-            return Pasta()
+    def buat_kendaraan(jenis_kendaraan):
+        if jenis_kendaraan == "mobil":
+            return Mobil()
+        elif jenis_kendaraan == "motor":
+            return Motor()
         else:
-            raise ValueError("Jenis makanan tidak didukung")
+            raise ValueError("Jenis kendaraan tidak didukung")
 
-# Penggunaan Pola Pabrik untuk pemesanan makanan
+# Penggunaan Pola Pabrik untuk manufaktur kendaraan
 if __name__ == "__main__":
-    pabrik_makanan = PabrikMakanan()
+    pabrik_kendaraan = PabrikKendaraan()
 
-    # Pesan Burger
-    burger = pabrik_makanan.buat_makanan('burger')
-    print("Dipesan:", burger)  # Output: Dipesan: Burger - Rp25000
+    # Manufaktur Mobil
+    mobil = pabrik_kendaraan.buat_kendaraan("mobil")
+    print(mobil.manufaktur())  # Output: Membuat Mobil
 
-    # Pesan Pizza
-    pizza = pabrik_makanan.buat_makanan('pizza')
-    print("Dipesan:",pizza)  # Output: Dipesan: Pizza - Rp45000
-
-    # Pesan Pasta
-    pasta = pabrik_makanan.buat_makanan('pasta')
-    print("Dipesan:", pasta)  # Output: Dipesan: Pasta - Rp30000
+    # Manufaktur Motor
+    motor = pabrik_kendaraan.buat_kendaraan("motor")
+    print(motor.manufaktur())  # Output: Membuat Motor
