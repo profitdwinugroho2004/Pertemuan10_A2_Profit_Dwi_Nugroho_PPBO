@@ -1,0 +1,49 @@
+# Contoh Pola Pabrik untuk Sistem Pemesanan Makanan
+
+class Makanan:
+    def __init__(self, nama, harga):
+        self.nama = nama
+        self.harga = harga
+
+    def __str__(self):
+        return f"{self.nama} - Rp{self.harga}"
+
+class Burger(Makanan):
+    def __init__(self):
+        super().__init__("Burger", 25000)
+
+class Pizza(Makanan):
+    def __init__(self):
+        super().__init__("Pizza", 45000)
+
+class Pasta(Makanan):
+    def __init__(self):
+        super().__init__("Pasta", 30000)
+
+class PabrikMakanan:
+    @staticmethod
+    def buat_makanan(jenis_makanan):
+        if jenis_makanan == 'burger':
+            return Burger()
+        elif jenis_makanan == 'pizza':
+            return Pizza()
+        elif jenis_makanan == 'pasta':
+            return Pasta()
+        else:
+            raise ValueError("Jenis makanan tidak didukung")
+
+# Penggunaan Pola Pabrik untuk pemesanan makanan
+if __name__ == "__main__":
+    pabrik_makanan = PabrikMakanan()
+
+    # Pesan Burger
+    burger = pabrik_makanan.buat_makanan('burger')
+    print("Dipesan:", burger)  # Output: Dipesan: Burger - Rp25000
+
+    # Pesan Pizza
+    pizza = pabrik_makanan.buat_makanan('pizza')
+    print("Dipesan:",pizza)  # Output: Dipesan: Pizza - Rp45000
+
+    # Pesan Pasta
+    pasta = pabrik_makanan.buat_makanan('pasta')
+    print("Dipesan:", pasta)  # Output: Dipesan: Pasta - Rp30000
