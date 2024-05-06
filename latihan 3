@@ -6,11 +6,11 @@ class Kendaraan:
 
 class Mobil(Kendaraan):
     def manufaktur(self):
-        return "Membuat Mobil"
+        return "Membuat Kendaraan Mobil"
 
 class Motor(Kendaraan):
     def manufaktur(self):
-        return "Membuat Motor"
+        return "Membuat Kendaraan Motor"
 
 class PabrikKendaraan:
     @staticmethod
